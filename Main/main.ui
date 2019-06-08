@@ -6,149 +6,234 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>663</width>
-    <height>756</height>
+    <width>889</width>
+    <height>790</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout_3">
-   <item row="1" column="1">
-    <widget class="QDialogButtonBox" name="menuOptions">
-     <property name="standardButtons">
-      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok|QDialogButtonBox::Reset</set>
-     </property>
-     <property name="centerButtons">
-      <bool>false</bool>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="0">
-    <layout class="QGridLayout" name="gridLayout_2"/>
-   </item>
-   <item row="0" column="1">
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <item>
     <widget class="QGroupBox" name="groupBox">
      <property name="title">
-      <string>Zakres Nauki</string>
+      <string>GroupBox</string>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout_2">
+     <layout class="QVBoxLayout" name="verticalLayout_5">
       <item>
-       <widget class="QGroupBox" name="groupBox_3">
+       <widget class="QGroupBox" name="groupBox_6">
         <property name="title">
-         <string/>
+         <string>GroupBox</string>
         </property>
-        <layout class="QVBoxLayout" name="verticalLayout">
+        <layout class="QHBoxLayout" name="horizontalLayout">
          <item>
-          <widget class="QSplitter" name="splitter">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
+          <widget class="QGroupBox" name="groupBox_3">
+           <property name="title">
+            <string/>
            </property>
-           <widget class="QCalendarWidget" name="dateFrom"/>
-           <widget class="QCalendarWidget" name="dateTo"/>
-          </widget>
-         </item>
-         <item>
-          <widget class="QFrame" name="frame">
-           <property name="layoutDirection">
-            <enum>Qt::LeftToRight</enum>
-           </property>
-           <property name="frameShape">
-            <enum>QFrame::StyledPanel</enum>
-           </property>
-           <property name="frameShadow">
-            <enum>QFrame::Raised</enum>
-           </property>
-           <layout class="QGridLayout" name="gridLayout">
-            <item row="0" column="0">
-             <widget class="QSplitter" name="splitter_3">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
+           <widget class="QSplitter" name="splitter_12">
+            <property name="geometry">
+             <rect>
+              <x>510</x>
+              <y>240</y>
+              <width>301</width>
+              <height>61</height>
+             </rect>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <widget class="QSplitter" name="splitter_10">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <widget class="QLabel" name="label">
+              <property name="text">
+               <string>Ilość Slajdów:</string>
               </property>
-              <widget class="QLabel" name="dateFromLabel">
-               <property name="text">
-                <string>TextLabel</string>
-               </property>
-              </widget>
-              <widget class="QLabel" name="dateToLabel">
-               <property name="text">
-                <string>TextLabel</string>
-               </property>
-              </widget>
              </widget>
-            </item>
-           </layout>
-          </widget>
-         </item>
-         <item>
-          <widget class="QSplitter" name="splitter_2">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <widget class="QCheckBox" name="checkBox">
-            <property name="text">
-             <string>Poniedziałek</string>
-            </property>
+             <widget class="QLabel" name="sNum">
+              <property name="text">
+               <string>sNum</string>
+              </property>
+             </widget>
+             <widget class="QTextEdit" name="textEdit"/>
+             <widget class="QPushButton" name="pushButton">
+              <property name="text">
+               <string>-</string>
+              </property>
+             </widget>
+             <widget class="QPushButton" name="pushButton_3">
+              <property name="text">
+               <string>+</string>
+              </property>
+             </widget>
+            </widget>
+            <widget class="QSplitter" name="splitter_11">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <widget class="QLabel" name="label_2">
+              <property name="text">
+               <string>Ilość Pytań:</string>
+              </property>
+             </widget>
+             <widget class="QLabel" name="pNum">
+              <property name="text">
+               <string>pNum</string>
+              </property>
+             </widget>
+             <widget class="QTextEdit" name="textEdit_2"/>
+             <widget class="QPushButton" name="pushButton_2">
+              <property name="text">
+               <string>-</string>
+              </property>
+             </widget>
+             <widget class="QPushButton" name="pushButton_4">
+              <property name="text">
+               <string>+</string>
+              </property>
+             </widget>
+            </widget>
            </widget>
-           <widget class="QCheckBox" name="checkBox_2">
-            <property name="text">
-             <string>Wtorek</string>
+           <widget class="QSplitter" name="splitter_13">
+            <property name="geometry">
+             <rect>
+              <x>20</x>
+              <y>270</y>
+              <width>433</width>
+              <height>17</height>
+             </rect>
             </property>
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <widget class="QCheckBox" name="checkBox">
+             <property name="text">
+              <string>Poniedziałek</string>
+             </property>
+            </widget>
+            <widget class="QCheckBox" name="checkBox_2">
+             <property name="text">
+              <string>Wtorek</string>
+             </property>
+            </widget>
+            <widget class="QCheckBox" name="checkBox_3">
+             <property name="text">
+              <string>Środa</string>
+             </property>
+            </widget>
+            <widget class="QCheckBox" name="checkBox_4">
+             <property name="text">
+              <string>Czwartek</string>
+             </property>
+            </widget>
+            <widget class="QCheckBox" name="checkBox_5">
+             <property name="text">
+              <string>Piątek</string>
+             </property>
+            </widget>
+            <widget class="QCheckBox" name="checkBox_6">
+             <property name="text">
+              <string>Sobota</string>
+             </property>
+            </widget>
+            <widget class="QCheckBox" name="checkBox_7">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="autoFillBackground">
+              <bool>false</bool>
+             </property>
+             <property name="text">
+              <string>Niedziela</string>
+             </property>
+             <property name="tristate">
+              <bool>false</bool>
+             </property>
+            </widget>
            </widget>
-           <widget class="QCheckBox" name="checkBox_3">
-            <property name="text">
-             <string>Środa</string>
+           <widget class="QWidget" name="layoutWidget">
+            <property name="geometry">
+             <rect>
+              <x>20</x>
+              <y>0</y>
+              <width>606</width>
+              <height>227</height>
+             </rect>
             </property>
-           </widget>
-           <widget class="QCheckBox" name="checkBox_4">
-            <property name="text">
-             <string>Czwartek</string>
-            </property>
-           </widget>
-           <widget class="QCheckBox" name="checkBox_5">
-            <property name="text">
-             <string>Piątek</string>
-            </property>
-           </widget>
-           <widget class="QCheckBox" name="checkBox_6">
-            <property name="text">
-             <string>Sobota</string>
-            </property>
-           </widget>
-           <widget class="QCheckBox" name="checkBox_7">
-            <property name="enabled">
-             <bool>true</bool>
-            </property>
-            <property name="autoFillBackground">
-             <bool>false</bool>
-            </property>
-            <property name="text">
-             <string>Niedziela</string>
-            </property>
-            <property name="tristate">
-             <bool>false</bool>
-            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_8">
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_3">
+               <item>
+                <layout class="QVBoxLayout" name="verticalLayout_6">
+                 <item>
+                  <widget class="QLabel" name="Od">
+                   <property name="text">
+                    <string>Od</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QCalendarWidget" name="dateFrom"/>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="dateFromLabel">
+                   <property name="text">
+                    <string>dateFromLabel</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QVBoxLayout" name="verticalLayout_7">
+                 <item>
+                  <widget class="QLabel" name="Do">
+                   <property name="text">
+                    <string>Do</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+				 <item>
+                  <widget class="QCalendarWidget" name="dateTo"/>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="dateToLabel">
+                   <property name="text">
+                    <string>dateToLabel</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_3">
+               <property name="text">
+                <string>Ilość Wybranych dni</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
            </widget>
           </widget>
          </item>
         </layout>
        </widget>
-      </item>
-      <item>
-       <spacer name="verticalSpacer">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeType">
-         <enum>QSizePolicy::Minimum</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
       </item>
       <item>
        <widget class="QGroupBox" name="groupBox_2">
@@ -156,20 +241,34 @@
          <string>log</string>
         </property>
         <property name="alignment">
-         <set>Qt::AlignCenter</set>
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
         </property>
-        <layout class="QHBoxLayout" name="horizontalLayout">
-         <item>
-          <widget class="QPlainTextEdit" name="logOutput">
-           <property name="sizeAdjustPolicy">
-            <enum>QAbstractScrollArea::AdjustIgnored</enum>
-           </property>
-          </widget>
-         </item>
-        </layout>
+        <widget class="QPlainTextEdit" name="logOutput">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>23</y>
+           <width>256</width>
+           <height>192</height>
+          </rect>
+         </property>
+         <property name="sizeAdjustPolicy">
+          <enum>QAbstractScrollArea::AdjustIgnored</enum>
+         </property>
+        </widget>
        </widget>
       </item>
      </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QDialogButtonBox" name="menuOptions">
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok|QDialogButtonBox::Reset</set>
+     </property>
+     <property name="centerButtons">
+      <bool>false</bool>
+     </property>
     </widget>
    </item>
   </layout>
