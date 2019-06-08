@@ -29,7 +29,6 @@ class MainDialog(QDialog):
         self.initUi()
 
     def initUi(self):
-
         self.dateFrom.selectionChanged.connect(self.changeDateFrom)
         self.dateTo.selectionChanged.connect(self.changeDateTo)
         self.dateFrom.setGridVisible(True)
@@ -37,7 +36,7 @@ class MainDialog(QDialog):
         self.dateTo.setSelectedDate(QtCore.QDate.currentDate().addDays(1))
 
         self.dFrom = self.dateFrom.selectedDate().toPyDate()
-        self.dTo= self.dateTo.selectedDate().toPyDate()
+        self.dTo = self.dateTo.selectedDate().toPyDate()
         # print(tempD1,tempD2)
         # self.dFrom = QDate(tempD1).toPyDate()
         # self.dTo=   QDate(tempD2).toPyDate()
@@ -55,19 +54,17 @@ class MainDialog(QDialog):
     def changeDateFrom(self):
         self.dateFromLabel.setText(self.dateFrom.selectedDate().toString())
         self.dFrom = self.dateFrom.selectedDate().toPyDate()
-        print("dFrom",self.dFrom)
+        print("dFrom", self.dFrom)
 
         return None
 
     def changeDateTo(self):
         self.dateToLabel.setText(self.dateTo.selectedDate().toString())
-        self.dTo= self.dateTo.selectedDate().toPyDate()
-        print("dTo",self.dTo)
+        self.dTo = self.dateTo.selectedDate().toPyDate()
+        print("dTo", self.dTo)
         return None
 
     def recalculateData(self):
-
-
         return None
 
 
