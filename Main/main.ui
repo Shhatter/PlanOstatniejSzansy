@@ -14,95 +14,151 @@
    <string>Dialog</string>
   </property>
   <layout class="QGridLayout" name="gridLayout_3">
-   <item row="2" column="1">
+   <item row="1" column="1">
     <widget class="QDialogButtonBox" name="buttonBox">
      <property name="standardButtons">
       <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok|QDialogButtonBox::Reset</set>
      </property>
     </widget>
    </item>
+   <item row="0" column="0">
+    <layout class="QGridLayout" name="gridLayout_2"/>
+   </item>
    <item row="0" column="1">
     <widget class="QGroupBox" name="groupBox">
      <property name="title">
       <string>GroupBox</string>
      </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QGroupBox" name="groupBox_3">
+        <property name="title">
+         <string/>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <item>
+          <widget class="QSplitter" name="splitter">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <widget class="QCalendarWidget" name="dateFrom"/>
+           <widget class="QCalendarWidget" name="dateTo"/>
+          </widget>
+         </item>
+         <item>
+          <widget class="QFrame" name="frame">
+           <property name="layoutDirection">
+            <enum>Qt::LeftToRight</enum>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::StyledPanel</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Raised</enum>
+           </property>
+           <layout class="QGridLayout" name="gridLayout">
+            <item row="0" column="0">
+             <widget class="QSplitter" name="splitter_3">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <widget class="QLabel" name="dateFromLabel">
+               <property name="text">
+                <string>TextLabel</string>
+               </property>
+              </widget>
+              <widget class="QLabel" name="dateToLabel">
+               <property name="text">
+                <string>TextLabel</string>
+               </property>
+              </widget>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSplitter" name="splitter_2">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <widget class="QCheckBox" name="checkBox">
+            <property name="text">
+             <string>Poniedziałek</string>
+            </property>
+           </widget>
+           <widget class="QCheckBox" name="checkBox_2">
+            <property name="text">
+             <string>Wtorek</string>
+            </property>
+           </widget>
+           <widget class="QCheckBox" name="checkBox_3">
+            <property name="text">
+             <string>Środa</string>
+            </property>
+           </widget>
+           <widget class="QCheckBox" name="checkBox_4">
+            <property name="text">
+             <string>Czwartek</string>
+            </property>
+           </widget>
+           <widget class="QCheckBox" name="checkBox_5">
+            <property name="text">
+             <string>Piątek</string>
+            </property>
+           </widget>
+           <widget class="QCheckBox" name="checkBox_6">
+            <property name="text">
+             <string>Sobota</string>
+            </property>
+           </widget>
+           <widget class="QCheckBox" name="checkBox_7">
+            <property name="text">
+             <string>Niedziela</string>
+            </property>
+           </widget>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Minimum</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="groupBox_2">
+        <property name="title">
+         <string>log</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="QPlainTextEdit" name="plainTextEdit">
+           <property name="sizeAdjustPolicy">
+            <enum>QAbstractScrollArea::AdjustIgnored</enum>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
     </widget>
-   </item>
-   <item row="1" column="1">
-    <widget class="QGroupBox" name="groupBox_2">
-     <property name="title">
-      <string>Zakres</string>
-     </property>
-     <widget class="QGroupBox" name="groupBox_3">
-      <property name="geometry">
-       <rect>
-        <x>130</x>
-        <y>90</y>
-        <width>617</width>
-        <height>226</height>
-       </rect>
-      </property>
-      <property name="title">
-       <string/>
-      </property>
-      <layout class="QVBoxLayout" name="verticalLayout">
-       <item>
-        <widget class="QSplitter" name="splitter">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <widget class="QCalendarWidget" name="calendarWidget"/>
-         <widget class="QCalendarWidget" name="calendarWidget_2"/>
-        </widget>
-       </item>
-       <item>
-        <widget class="QSplitter" name="splitter_2">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <widget class="QCheckBox" name="checkBox">
-          <property name="text">
-           <string>Poniedziałek</string>
-          </property>
-         </widget>
-         <widget class="QCheckBox" name="checkBox_2">
-          <property name="text">
-           <string>Wtorek</string>
-          </property>
-         </widget>
-         <widget class="QCheckBox" name="checkBox_3">
-          <property name="text">
-           <string>Środa</string>
-          </property>
-         </widget>
-         <widget class="QCheckBox" name="checkBox_4">
-          <property name="text">
-           <string>Czwartek</string>
-          </property>
-         </widget>
-         <widget class="QCheckBox" name="checkBox_5">
-          <property name="text">
-           <string>Piątek</string>
-          </property>
-         </widget>
-         <widget class="QCheckBox" name="checkBox_6">
-          <property name="text">
-           <string>Sobota</string>
-          </property>
-         </widget>
-         <widget class="QCheckBox" name="checkBox_7">
-          <property name="text">
-           <string>Niedziela</string>
-          </property>
-         </widget>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-    </widget>
-   </item>
-   <item row="0" column="0">
-    <layout class="QGridLayout" name="gridLayout_2"/>
    </item>
   </layout>
  </widget>
