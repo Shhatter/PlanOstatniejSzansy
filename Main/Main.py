@@ -212,17 +212,17 @@ class MainDialog(QDialog):
             if (dFromTemp.weekday() == 0 and self.pon == True):
                 daysCounter += 1
 
-            if (dFromTemp.weekday() == 1 and self.pon == True):
+            if (dFromTemp.weekday() == 1 and self.wto == True):
                 daysCounter += 1
-            if (dFromTemp.weekday() == 2 and self.pon == True):
+            if (dFromTemp.weekday() == 2 and self.sro == True):
                 daysCounter += 1
-            if (dFromTemp.weekday() == 3 and self.pon == True):
+            if (dFromTemp.weekday() == 3 and self.czw == True):
                 daysCounter += 1
-            if (dFromTemp.weekday() == 4 and self.pon == True):
+            if (dFromTemp.weekday() == 4 and self.pio == True):
                 daysCounter += 1
-            if (dFromTemp.weekday() == 5 and self.pon == True):
+            if (dFromTemp.weekday() == 5 and self.sob == True):
                 daysCounter += 1
-            if (dFromTemp.weekday() == 6 and self.pon == True):
+            if (dFromTemp.weekday() == 6 and self.nie == True):
                 daysCounter += 1
             dFromTemp = dFromTemp + datetime.timedelta(days=1)
 
