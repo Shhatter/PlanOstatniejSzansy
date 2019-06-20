@@ -1,9 +1,8 @@
 import sys
 import random
 import datetime
-import calendar
+import math
 from PyQt5 import QtCore
-from PyQt5.QtCore import pyqtSlot, QDate
 from PyQt5.QtWidgets import QApplication, QDialog, QCalendarWidget, QVBoxLayout, QDialogButtonBox
 from PyQt5.uic import loadUi
 
@@ -59,6 +58,8 @@ class MainDialog(QDialog):
         self.dateToLabel.setText(self.dateTo.selectedDate().toString())
 
         self.logOutput.appendPlainText("Start")
+        self.logOutput.appendPlainText("Pamiętaj by data początku była przed datą końca :) ")
+
         self.logOutput.setReadOnly(True)
 
         end_date = QtCore.QDate.currentDate()
@@ -107,6 +108,10 @@ class MainDialog(QDialog):
         self.pioBox.setChecked(False)
         self.sobBox.setChecked(False)
         self.nieBox.setChecked(False)
+
+        self.changeSlide.clear()
+        self.changeQuestion.clear()
+
         self.logOutput.appendPlainText("Reset Danych")
 
     def subSlide(self):
@@ -119,6 +124,8 @@ class MainDialog(QDialog):
             else:
                 self.slideNumber -= int(temp)
                 self.sNum.setText(str(self.slideNumber))
+        else:
+            self.logOutput.appendPlainText("nieprawidłowa wartość w polu - musi być to tylko liczba całkowita")
 
         self.changeSlide.clear()
         print("temp", temp)
@@ -129,6 +136,8 @@ class MainDialog(QDialog):
         if (str(temp).isdigit()):
             self.slideNumber += int(temp)
             self.sNum.setText(str(self.slideNumber))
+        else:
+            self.logOutput.appendPlainText("nieprawidłowa wartość w polu - musi być to tylko liczba całkowita")
 
         self.changeSlide.clear()
         print("temp", temp)
@@ -143,7 +152,8 @@ class MainDialog(QDialog):
             else:
                 self.questionNumber -= int(temp)
                 self.pNum.setText(str(self.questionNumber))
-
+        else:
+            self.logOutput.appendPlainText("nieprawidłowa wartość w polu - musi być to tylko liczba całkowita")
         self.changeQuestion.clear()
         print("temp", temp)
 
@@ -153,6 +163,8 @@ class MainDialog(QDialog):
         if (str(temp).isdigit()):
             self.questionNumber += int(temp)
             self.pNum.setText(str(self.questionNumber))
+        else:
+            self.logOutput.appendPlainText("nieprawidłowa wartość w polu - musi być to tylko liczba całkowita")
 
         self.changeQuestion.clear()
         print("temp", temp)
@@ -172,8 +184,85 @@ class MainDialog(QDialog):
         return None
 
     def calulateData(self):
+        self.logOutput.appendPlainText("--------------------------------------------------------")
 
-    # obliczenie ile dni jest faktycznej nauki
+        undoFlag = False;
+        # obliczenie ile dni jest faktycznej nauki
+        if (self.questionNumber == 0 and self.slideNumber == 0):
+            self.logOutput.appendPlainText("Nie dodano żadnych pytań !")
+            undoFlag = True
+
+        if (self.dFrom >= self.dTo):
+            self.logOutput.appendPlainText("Data początku nie może być większa bądź równa dacie końca !")
+            print("dateFrom before dateTo", self.dFrom)
+            undoFlag = True
+
+        if (
+                self.pon == False and self.wto == False and self.sro == False and self.czw == False and self.pio == False and self.sob == False and self.nie == False):
+            self.logOutput.appendPlainText("Nie wybrano żadnego dnia w tygodniu na naukę !")
+            undoFlag = True
+
+        if undoFlag:
+            return None
+
+        daysCounter = 0
+        dFromTemp = self.dFrom
+
+        while dFromTemp != self.dTo:
+            if (dFromTemp.weekday() == 0 and self.pon == True):
+                daysCounter += 1
+
+            if (dFromTemp.weekday() == 1 and self.pon == True):
+                daysCounter += 1
+            if (dFromTemp.weekday() == 2 and self.pon == True):
+                daysCounter += 1
+            if (dFromTemp.weekday() == 3 and self.pon == True):
+                daysCounter += 1
+            if (dFromTemp.weekday() == 4 and self.pon == True):
+                daysCounter += 1
+            if (dFromTemp.weekday() == 5 and self.pon == True):
+                daysCounter += 1
+            if (dFromTemp.weekday() == 6 and self.pon == True):
+                daysCounter += 1
+            dFromTemp = dFromTemp + datetime.timedelta(days=1)
+
+        self.logOutput.appendPlainText("ilość dni nauki: " + str(daysCounter))
+
+        if (self.slideNumber != 0):
+            slidesPerDay = self.slideNumber / daysCounter
+            if int(slidesPerDay) == slidesPerDay:
+                self.logOutput.appendPlainText("Ilość slajdów do przerobienia dziennie: " + str(slidesPerDay))
+            else:
+
+                missingslides = self.slideNumber - (math.floor(slidesPerDay) * daysCounter)
+                self.logOutput.appendPlainText(
+                    "Ilość slajdów do przerobienia dziennie: " + str(math.floor(slidesPerDay)))
+                if missingslides == 1:
+                    self.logOutput.appendPlainText("z czego pierwszego dnia trzeba zrobić dodatkowo 1 dodatkowy slajd")
+                else:
+                    self.logOutput.appendPlainText(
+                        "z czego, pierwszego dnia trzeba zrobić dodatkowo " + str(missingslides) + " slajdy")
+
+        if (self.questionNumber != 0):
+            questionsPerDay = self.questionNumber / daysCounter
+            if int(questionsPerDay) == questionsPerDay:
+                self.logOutput.appendPlainText("Ilość pytań do przerobienia dziennie: " + str(questionsPerDay))
+            else:
+                missingQuestions = self.questionNumber - (math.floor(questionsPerDay) * daysCounter)
+                self.logOutput.appendPlainText(
+                    "Ilość pytań do przerobienia dziennie: " + str(math.floor(questionsPerDay)))
+                if missingQuestions == 1:
+                    self.logOutput.appendPlainText(
+                        "z czego, pierwszego dnia trzeba zrobić dodatkowo 1 dodatkowe pytanie")
+                else:
+                    self.logOutput.appendPlainText(
+                        "z czego pierwszego dnia trzeba zrobić dodatkowo " + str(missingQuestions) + " pytania")
+        # if (self.dFrom >= self.dTo):
+        #     self.logOutput.appendPlainText("Data końca nie może być przed datą początku !")
+        #     print("dateFrom before dateTo", self.dFrom)
+        #     return None
+        self.logOutput.appendPlainText("--------------------------------------------------------")
+
         return None
 
     def dayCheck(self):
