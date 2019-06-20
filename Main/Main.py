@@ -4,13 +4,15 @@ import datetime
 import calendar
 from PyQt5 import QtCore
 from PyQt5.QtCore import pyqtSlot, QDate
-from PyQt5.QtWidgets import QApplication, QDialog, QCalendarWidget, QVBoxLayout
+from PyQt5.QtWidgets import QApplication, QDialog, QCalendarWidget, QVBoxLayout, QDialogButtonBox
 from PyQt5.uic import loadUi
 
 gFCompliments = [
     "Najfajniejszy Kruszek na świecie",
     "Najmądrzejszy Kruszek",
-    "Najlepiej zdający egzaminy Kruszek"
+    "Najlepiej zdający egzaminy Kruszek",
+    "Nikt tak nie grzeje jak Kruszek"
+
 ]
 
 
@@ -19,16 +21,27 @@ class MainDialog(QDialog):
     def __init__(self):
         super().__init__()
         loadUi('main.ui', self)
-        self.dFrom = None
-        self.dTo = None
+        self.dFrom = datetime.date.today()
+        self.dTo = datetime.date.today() + datetime.timedelta(days=1)
         self.questionNumber = 0
         self.slideNumber = 0
+
+        self.pon = False
+        self.wto = False
+        self.sro = False
+        self.czw = False
+        self.pio = False
+        self.sob = False
+        self.nie = False
+
         self.setWindowTitle(gFCompliments[random.randint(0, len(gFCompliments) - 1)])
         # self.dateFrom = None
         # self.dateTo = None
         self.initUi()
 
     def initUi(self):
+        self.sNum.setText(str(self.slideNumber))
+        self.pNum.setText(str(self.questionNumber))
         self.dateFrom.selectionChanged.connect(self.changeDateFrom)
         self.dateTo.selectionChanged.connect(self.changeDateTo)
         self.dateFrom.setGridVisible(True)
@@ -51,6 +64,99 @@ class MainDialog(QDialog):
         end_date = QtCore.QDate.currentDate()
         # self.resetButton.connect(self.__init__())
 
+        self.ponBox.stateChanged.connect(self.dayCheck)
+        self.wtoBox.stateChanged.connect(self.dayCheck)
+        self.sroBox.stateChanged.connect(self.dayCheck)
+        self.czwBox.stateChanged.connect(self.dayCheck)
+        self.pioBox.stateChanged.connect(self.dayCheck)
+        self.sobBox.stateChanged.connect(self.dayCheck)
+        self.nieBox.stateChanged.connect(self.dayCheck)
+
+        self.subSlideNbr.clicked.connect(self.subSlide)
+        self.addSlideNbr.clicked.connect(self.addSlide)
+        self.subQuestionNbr.clicked.connect(self.subQuestion)
+        self.addQuestionNbr.clicked.connect(self.addQuestion)
+
+        self.menuOptions.button(QDialogButtonBox.Reset).clicked.connect(self.resetApp)
+        self.menuOptions.button(QDialogButtonBox.Ok).clicked.connect(self.calulateData)
+
+    def resetApp(self):
+        print("Reset All Data")
+        self.dFrom = datetime.date.today()
+        self.dTo = datetime.date.today() + datetime.timedelta(days=1)
+        self.questionNumber = 0
+        self.slideNumber = 0
+
+        self.dateFrom.setSelectedDate(QtCore.QDate.currentDate())
+        self.dateTo.setSelectedDate(QtCore.QDate.currentDate().addDays(1))
+
+        self.pNum.setText(str("0"))
+        self.sNum.setText(str("0"))
+        self.pon = False
+        self.wto = False
+        self.sro = False
+        self.czw = False
+        self.pio = False
+        self.sob = False
+        self.nie = False
+
+        self.ponBox.setChecked(False)
+        self.wtoBox.setChecked(False)
+        self.sroBox.setChecked(False)
+        self.czwBox.setChecked(False)
+        self.pioBox.setChecked(False)
+        self.sobBox.setChecked(False)
+        self.nieBox.setChecked(False)
+        self.logOutput.appendPlainText("Reset Danych")
+
+    def subSlide(self):
+
+        temp = str(self.changeSlide.toPlainText()).replace(" ", "")
+        if (str(temp).isdigit()):
+            if ((self.slideNumber - int(temp)) < 0):
+                self.slideNumber = 0
+                self.sNum.setText(str(self.slideNumber))
+            else:
+                self.slideNumber -= int(temp)
+                self.sNum.setText(str(self.slideNumber))
+
+        self.changeSlide.clear()
+        print("temp", temp)
+
+    def addSlide(self):
+
+        temp = str(self.changeSlide.toPlainText()).replace(" ", "")
+        if (str(temp).isdigit()):
+            self.slideNumber += int(temp)
+            self.sNum.setText(str(self.slideNumber))
+
+        self.changeSlide.clear()
+        print("temp", temp)
+
+    def subQuestion(self):
+
+        temp = str(self.changeQuestion.toPlainText()).replace(" ", "")
+        if (str(temp).isdigit()):
+            if ((self.questionNumber - int(temp)) < 0):
+                self.questionNumber = 0
+                self.pNum.setText(str(self.questionNumber))
+            else:
+                self.questionNumber -= int(temp)
+                self.pNum.setText(str(self.questionNumber))
+
+        self.changeQuestion.clear()
+        print("temp", temp)
+
+    def addQuestion(self):
+
+        temp = str(self.changeQuestion.toPlainText()).replace(" ", "")
+        if (str(temp).isdigit()):
+            self.questionNumber += int(temp)
+            self.pNum.setText(str(self.questionNumber))
+
+        self.changeQuestion.clear()
+        print("temp", temp)
+
     def changeDateFrom(self):
         self.dateFromLabel.setText(self.dateFrom.selectedDate().toString())
         self.dFrom = self.dateFrom.selectedDate().toPyDate()
@@ -61,11 +167,46 @@ class MainDialog(QDialog):
     def changeDateTo(self):
         self.dateToLabel.setText(self.dateTo.selectedDate().toString())
         self.dTo = self.dateTo.selectedDate().toPyDate()
+
         print("dTo", self.dTo)
         return None
 
-    def recalculateData(self):
+    def calulateData(self):
+
+    # obliczenie ile dni jest faktycznej nauki
         return None
+
+    def dayCheck(self):
+        try:
+            if (self.pon != self.ponBox.isChecked()):
+                self.pon = self.ponBox.isChecked()
+                print("pon Changed", self.pon)
+
+            if (self.wto != self.wtoBox.isChecked()):
+                self.wto = self.wtoBox.isChecked()
+                print("wto Changed", self.wto)
+
+            if (self.sro != self.sroBox.isChecked()):
+                self.sro = self.sroBox.isChecked()
+                print("sro Changed", self.sro)
+
+            if (self.czw != self.czwBox.isChecked()):
+                self.czw = self.czwBox.isChecked()
+                print("czw Changed", self.czw)
+
+            if (self.pio != self.pioBox.isChecked()):
+                self.pio = self.pioBox.isChecked()
+                print("pio Changed", self.pio)
+
+            if (self.sob != self.sobBox.isChecked()):
+                self.sob = self.sobBox.isChecked()
+                print("sob Changed", self.sob)
+
+            if (self.nie != self.nieBox.isChecked()):
+                self.nie = self.nieBox.isChecked()
+                print("nie changed", self.nie)
+        except:
+            print("An exception occurred")
 
 
 app = QApplication(sys.argv)
